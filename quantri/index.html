@@ -1,0 +1,192 @@
+<html lang="en" style="scroll-behavior: smooth;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <style>
+            .alert-callapi{
+                transition: 0.3s ease-in-out;
+                position: fixed;
+                top: 15px;
+                right: -100%;
+            }
+            .alert-callapi.active{
+                right: 0;
+            }
+        </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6 mx-auto">
+                <h3 class="display-4 text-center">Quản trị bán hàng</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="">id sản phẩm  <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="id">
+                        <p id="errid" class="text-danger"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Tên sản phẩm: <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="name">
+                        <p id="errname" class="text-danger"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="">giá : <span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" id="price">
+                        <p id="errprice" class="text-danger"></p>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="">image <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="image">
+                                <p id="errimage" class="text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="">img : </label>
+                                <input type="text" class="form-control" id="img">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="select">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="">Loại sản phẩm :</label>
+                                    <select name="" id="type" class="form-control">
+                                        <option value="samsung">samsung</option>
+                                        <option value="iphone">iphone</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="">rating :</label>
+                                    <select name=""  class="form-control" id='rating'>
+                                        <option value="10">10 sao</option>
+                                        <option value="9">9 sao</option>
+                                        <option value="8">8 sao</option>
+                                        <option value="7">7 sao</option>
+                                        <option value="6">6 sao</option>
+                                        <option value="5">5 sao</option>
+                                        <option value="4">4 sao</option>
+                                        <option value="3">3 sao</option>
+                                        <option value="2">2 sao</option>
+                                        <option value="1">1 sap</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">description : </label>
+                        <input type="text" class="form-control" id="desc">
+                    </div>
+                    <div class="row">
+                        <div class="col-4 form-group">
+                            <label for="">front Camera : </label>
+                            <input type="text" class="form-control" id="frontCamera">
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="">back Camera : </label>
+                            <input type="text" class="form-control" id="backCamera">
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="">screen : </label>
+                            <input type="text" class="form-control" id="screen">
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="form-group">
+                        <label for="">inventory: </label>
+                        <input type="number" class="form-control" id="inventory">
+                    </div>
+
+                    <div class="form-group text-center">
+                        <button id="btn-addEdit" type="button" onclick="addEditProduct()" class="btn btn-success">ADD
+                            PRODUCT</button>
+                        <button type="button" id="btn-update" onclick="updateStudent()" class="btn btn-success"
+                            style="display: none;">update student</button>
+                        <button id="btn-reset" type="reset" class="btn btn-success"
+                            style="display: none;">reset</button>
+                    </div>
+                </form>
+                <div class="form-group">
+                    <label for="">tìm kiếm : </label>
+                    <input type="text" class="form-control" id="search" oninput="findProduct()" placeholder="tìm theo tên sản phâm">
+                </div>
+            </div>
+
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>image</th>
+                    <th>img</th>
+                    <th>type</th>
+                    <th>name</th>
+                    <th>price</th>
+                    <th>backCamera</th>
+                    <th>frontCamera</th>
+                    <th>inventory</th>
+                    <th>screen</th>
+                    <th>rating</th>
+                    <th>desc</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="listproducts">
+                <tr >
+                    <td><img src="" alt="img product"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <button class="btn btn-primary" onclick="getProductToUpdate('0')">sửa</button>
+                        <button class="btn btn-danger" onclick="deleteProduct('0')">xóa</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="alert-callapi" >
+            <div class="alert alert-success" role="alert">
+                A simple success alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../models/product.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
