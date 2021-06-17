@@ -12,7 +12,7 @@ var createProducts=function(ListProducts){
         htmlListProducts+=`
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
             <div class="card p-1 h-100">
-            <img src="${ListProducts[i].image}" class="card-img-top" alt="...">
+            <img src="${ListProducts[i].img}" class="card-img-top" alt="...">
             <div class="card-body p-0">
                 <h5 class="card-title mt-2">${ListProducts[i].name}</h5>
                 <p class="card-text">${ListProducts[i].desc}</p>

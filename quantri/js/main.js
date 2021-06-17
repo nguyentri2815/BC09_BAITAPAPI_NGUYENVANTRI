@@ -11,16 +11,13 @@ var createProduct = function(data){
     htmlInTableList+=`
         <tr >
             <td>${data[i].id}</td>
-            <td><img src="${data[i].image}" style="max-width:150px" alt="img product"></td>
-            <td>${data[i].img}</td>
+            <td><img src="${data[i].img}" style="max-width:150px" alt="img product"></td>
             <td>${data[i].type}</td>
             <td>${data[i].name}</td>
             <td>${data[i].price}</td>
             <td>${data[i].backCamera}</td>
             <td>${data[i].frontCamera}</td>
-            <td>${data[i].inventory}</td>
             <td>${data[i].screen}</td>
-            <td>${data[i].rating}</td>
             <td>${data[i].desc}</td>
             <td>
                 <button class="btn btn-primary" onclick="getProductToUpdate(${data[i].id})">sửa</button>
@@ -58,14 +55,11 @@ var addEditProduct=function(){
     var name =document.querySelector('#name').value;
     var price =document.querySelector('#price').value;
     var type =document.querySelector('#type').value;
-    var image =document.querySelector('#image').value;
-    var img =document.querySelector('#img').value ||' img default';
-    var rating =document.querySelector('#rating').value;
+    var img =document.querySelector('#img').value 
     var desc =document.querySelector('#desc').value ||' desc default';
     var frontCamera =document.querySelector('#frontCamera').value || ' front camera default';
     var backCamera =document.querySelector('#backCamera').value || 'back camera default';
     var screen =document.querySelector('#screen').value || 'screen default';
-    var inventory =document.querySelector('#inventory').value || 10;
     if(!checkValidation) return;
 
     var newProduct = new Product(
@@ -73,12 +67,9 @@ var addEditProduct=function(){
         desc,
         frontCamera,
         id,
-        image,
         img,
-        inventory,
         name,
         price,
-        rating,
         screen,
         type
     );
@@ -164,14 +155,11 @@ var getProductToUpdate =function(id){
             document.querySelector('#name').value=res.data[0].name;
             document.querySelector('#price').value=res.data[0].price;
             document.querySelector('#type').value=res.data[0].type;
-            document.querySelector('#image').value=res.data[0].image;
             document.querySelector('#img').value= res.data[0].img;
-            document.querySelector('#rating').value =res.data[0].rating;
             document.querySelector('#desc').value = res.data[0].desc;
             document.querySelector('#frontCamera').value = res.data[0].frontCamera;
             document.querySelector('#backCamera').value = res.data[0].backCamera;
             document.querySelector('#screen').value |= res.data[0].screen;
-            document.querySelector('#inventory').value = res.data[0].inventory;
         }
     })
     .catch(function(err){
@@ -214,12 +202,12 @@ var validateForm = function(){
     var id= document.querySelector('#id').value;
     var name= document.querySelector('#name').value;
     var price= document.querySelector('#price').value;
-    var image= document.querySelector('#image').value;
+    var img= document.querySelector('#img').value;
     var isValid= true;
     isValid &=checkRequired(id,'errid','bạn chưa nhập id sản phẩm') && checklength(id,'errid',1);
     isValid &=checkRequired(name,'errname','bạn chưa nhập tên sản phẩm') ;
     isValid &=checkRequired(price,'errprice','bạn chưa nhập giá sản phẩm');
-    isValid &=checkRequired(image,'errimage','kiếm link ảnh dán vào bạn ơi');
+    isValid &=checkRequired(img,'errimage','kiếm link ảnh dán vào bạn ơi');
     return isValid;
 }
 var checkText = function(value, errorid){
