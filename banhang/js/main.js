@@ -107,7 +107,7 @@ var createProductCart=function(listcart){
         numberProduct+=listcart[i].quantity;
         htmlCart+=`
         <tr>
-            <th scope="row"><img src="${listcart[i].image}" alt="" style="max-width:150px"></th>
+            <th scope="row"><img src="${listcart[i].img}" alt="" style="max-width:150px"></th>
             <td>${listcart[i].name}</td>
             <td>${listcart[i].price} Đ</td>
             <td class="d-flex align-items-center"> <input oninput="changeValueInputCart(event,${listcart[i].id})" type="number" value="${listcart[i].quantity}"></input>
